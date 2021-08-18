@@ -6,10 +6,9 @@ namespace HelloDungeon
 {
     class Stages
     {
-        Entity player = new Entity("", 100, 40, true, 20, 20);
-        Entity enemy = new Entity("Skeleton", 100, 20, false, 10, 15);
+        Entity player = new Entity("", 100, 40, true);
+        Entity enemy = new Entity("Skeleton", 100, 20, false);
 
-        //
         public void StartUp()
         {
             Console.WriteLine("Hello, what is your name?");
@@ -30,19 +29,23 @@ namespace HelloDungeon
                 if (player.isTurn == true)
                 {
                     Console.WriteLine("What would you like to do?");
-                    Console.WriteLine("1. Attack!");
-                    Console.WriteLine("2. Scavage for items!");
-                    Console.WriteLine("3. Run Away!");
+                    Console.WriteLine("1. Attack");
+                    Console.WriteLine("2. Run Away");
                     string choice = Console.ReadLine().ToLower();
                     switch (choice)
                     {
                         case "attack":
                         case "1":
-                            Fight();
+                            enemy.takeDamage(player.attack);
+                            Console.WriteLine($"{player.name} attacks the {enemy.name} for {player.attack} damage!");
+                            Console.WriteLine($"The {enemy.name}'s new Hp: {enemy.Health}");
+                            Console.ReadLine();
+                            player.isTurn = false;
+                            enemy.isTurn = true;
                                 break;
                         case "run away":
                         case "run":
-                        case "3":
+                        case "2":
                             Console.WriteLine("You aren't allowed to run away!");
                             Console.ReadLine();
                             break;
