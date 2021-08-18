@@ -27,9 +27,9 @@ namespace HelloDungeon
             defense = Defense;
         }
 
-        public int takeDamage(int damageAmount)
+        public int takeDamage(int damageAmount, int enemyCrit, int enemyDefense)
         {
-            hp -= damageAmount;
+            hp -= damageAmount * (100 - defense) / 100;
 
             if (hp < 0)
             {
@@ -43,14 +43,19 @@ namespace HelloDungeon
             return hp > 0;
         }
 
-        public void Fight(Entity otherEntity)
+        public void Attack( Entity otherEntity)
         {
-            otherEntity.takeDamage(attack);
+            otherEntity.takeDamage(attack, critHit, defense);
             Console.WriteLine($"{name} attacks the {otherEntity.name} for {attack} damage!");
             Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.Health}");
             Console.ReadLine();
             isTurn = false;
             otherEntity.isTurn = true;
+        }
+
+        public void Scavage()
+        {
+
         }
     }
 }
