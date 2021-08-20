@@ -30,5 +30,10 @@ namespace HelloDungeon
         {
 
         }
+
+        public float takeDamage(int damageAmount, int enemyCrit, int enemyDefense)
+        {
+
+        }
     }
 }
