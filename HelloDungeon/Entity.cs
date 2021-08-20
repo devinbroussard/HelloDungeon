@@ -7,8 +7,8 @@ namespace HelloDungeon
     class Entity
     {
         public string name;
-        private int hp;
-        public int Health
+        private float hp;
+        public float Health
         {
             get { return hp; }
         }
@@ -42,6 +42,8 @@ namespace HelloDungeon
         {
             return hp > 0;
         }
+
+
 
         public void Attack( Entity otherEntity)
         {

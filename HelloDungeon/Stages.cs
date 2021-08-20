@@ -6,10 +6,15 @@ namespace HelloDungeon
 {
     class Stages
     {
-        Entity player = new Entity("", 100, 40, true, 20, 15);
-        Entity enemy = new Entity("Skeleton", 100, 20, false, 10, 10);
+        public Entity player;
+        public Entity enemy;
+        public Stages()
+        {
+            player = new Entity("", 100, 30, true, 20, 15);
+            enemy = new Entity("Skeleton", 100, 20, false, 10, 10);
+        }
 
-        public void StartUp()
+        public void startGame()
         {
             Console.WriteLine("Hello, what is your name?");
             player.name = Console.ReadLine();
@@ -17,6 +22,18 @@ namespace HelloDungeon
             Console.ReadLine();
             FightScene();
         }
+
+        public void gameOver()
+        {
+            Console.WriteLine("Game Over!");
+            Console.WriteLine("Press enter to give up, or type 'restart', to try again!");
+            string gameOverChoice = Console.ReadLine().ToLower();
+            if (gameOverChoice == "restart")
+            {
+                startGame();
+            }
+        }
+
 
         public void FightScene()
         {
@@ -68,17 +85,5 @@ namespace HelloDungeon
 
         }
 
-
-
-        public void gameOver()
-        {
-            Console.WriteLine("Game Over!");
-            Console.WriteLine("Press enter to give up, or type 'restart', to try again!");
-            string gameOverChoice = Console.ReadLine().ToLower();
-            if (gameOverChoice == "restart")
-            {
-                StartUp();
-            }
-        }
     }
 }

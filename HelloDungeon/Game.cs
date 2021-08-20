@@ -9,11 +9,11 @@ namespace HelloDungeon
         Stages stages = new Stages();
         public void Run()
         {
-            
-            StartUp();
+            Stages stages = new Stages();
+            startGame();
         }
 
-        public void StartUp()
+        public void startGame()
         {
             Console.WriteLine("Hello, what is your name?");
             stages.player.name = Console.ReadLine();
