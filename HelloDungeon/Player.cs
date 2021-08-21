@@ -33,6 +33,10 @@ namespace HelloDungeon
 
         public float takeDamage(int damageAmount, int enemyCrit, int enemyDefense)
         {
+            hp -= damageAmount * (100 - defense) / 100;
+
+            if (hp < 0) hp = 0;
+
 
         }
     }
