@@ -7,14 +7,17 @@ namespace HelloDungeon
     interface BaseEntity
     {
         string name { get; set; }
-        float Health { get; set; }
+        float health { get; set; }
         int attack { get; set; } 
         int defense { get; set; }
         bool isTurn { get; set; }
+        int critHit { get; set; }
 
         bool isAlive();
 
-        void fight(BaseEntity otherEntity);
+        void Attack(BaseEntity otherEntity);
+
+        float takeDamage(float damageAmount, int enemyCrit, int enemyDefense);
 
     }
 }

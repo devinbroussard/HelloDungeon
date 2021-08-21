@@ -16,6 +16,7 @@ namespace HelloDungeon
         public bool isTurn;
         public int critHit;
         public int defense;
+        public int damageAmount;
 
         public Entity(string Name, int Hp, int Attack, bool IsTurn, int CritHit, int Defense)
         {

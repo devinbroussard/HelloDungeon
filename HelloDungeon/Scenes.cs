@@ -4,36 +4,36 @@ using System.Text;
 
 namespace HelloDungeon
 {
-    class Stages
+    class Scenes
     {
-        public Entity player;
+
+        Game game = new Game();
+        public Player player;
         public Entity enemy;
-        public Stages()
+        public Scenes()
         {
-            player = new Entity("", 100, 30, true, 20, 15);
+            player = new Player("", 40, 20, 100, true, 15);
             enemy = new Entity("Skeleton", 100, 20, false, 10, 10);
         }
 
-        public void startGame()
+        public void StartGame()
         {
             Console.WriteLine("Hello, what is your name?");
             player.name = Console.ReadLine();
             Console.WriteLine($"Okay, {player.name} press enter to start your adventure!");
             Console.ReadLine();
-            FightScene();
         }
 
-        public void gameOver()
+        public void GameOver()
         {
             Console.WriteLine("Game Over!");
             Console.WriteLine("Press enter to give up, or type 'restart', to try again!");
             string gameOverChoice = Console.ReadLine().ToLower();
             if (gameOverChoice == "restart")
             {
-                startGame();
+                StartGame();
             }
         }
-
 
         public void FightScene()
         {

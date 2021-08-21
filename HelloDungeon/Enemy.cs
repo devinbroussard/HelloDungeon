@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HelloDungeon
 {
-    class Player : BaseEntity
+    class Enemy : BaseEntity
     {
         public string name { get; set; }
         private float _health;
@@ -19,7 +19,7 @@ namespace HelloDungeon
         public int critHit { get; set; }
         public float damageAmount { get; set; }
 
-        public Player(string Name, int Attack, int Defense, float Health, bool _isTurn, int _critHit)
+        public Enemy(string Name, int Attack, int Defense, float Health, bool _isTurn, int _critHit)
         {
             attack = Attack;
             name = Name;
