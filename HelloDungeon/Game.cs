@@ -8,8 +8,8 @@ namespace HelloDungeon
     {
         public void Run()
         {
-            Stages stages = new Stages();
-            stages.startGame();
+            Scenes scenes = new Scenes();
+            scenes.StartGame();
         }
     }
 }

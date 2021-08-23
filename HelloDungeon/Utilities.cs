@@ -6,7 +6,7 @@ namespace HelloDungeon
 {
     class Utilities
     {
-        static void writeRead(string text)
+        static void WriteRead(string text)
         {
             Console.WriteLine(text);
             Console.ReadLine();

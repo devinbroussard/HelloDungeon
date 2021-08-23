@@ -9,11 +9,11 @@ namespace HelloDungeon
 
         Game game = new Game();
         public Player player;
-        public Entity enemy;
+        public Enemy enemy;
         public Scenes()
         {
             player = new Player("", 40, 20, 100, true, 15);
-            enemy = new Entity("Skeleton", 100, 20, false, 10, 10);
+            enemy = new Enemy("Skeleton", 40, 20, 100, true, 15);
         }
 
         public void StartGame()
@@ -73,7 +73,7 @@ namespace HelloDungeon
                 {
                     player.takeDamage(enemy.attack, enemy.critHit, enemy.defense);
                     Console.WriteLine($"The {enemy.name} attacks {player.name} for {enemy.attack} damage!");
-                    Console.WriteLine($"{player.name}'s new Hp: {player.Health}");
+                    Console.WriteLine($"{player.name}'s new Hp: {player.health}");
                     Console.ReadLine();
                     player.isTurn = true;
                     enemy.isTurn = false;
@@ -81,7 +81,7 @@ namespace HelloDungeon
 
             }
 
-            gameOver();
+            GameOver();
 
         }
 
