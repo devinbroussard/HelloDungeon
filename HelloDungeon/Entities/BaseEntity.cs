@@ -14,10 +14,6 @@ namespace HelloDungeon
         int critHit { get; set; }
 
         bool isAlive();
-
         void Attack(BaseEntity otherEntity);
-
-        float takeDamage(float damageAmount, int enemyCrit, int enemyDefense);
-
     }
 }

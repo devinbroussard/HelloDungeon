@@ -26,13 +26,14 @@ namespace HelloDungeon
             _health = Health;
             isTurn = _isTurn;
             critHit = _critHit;
+            defense = Defense;
         }
         public bool isAlive()
         {
             return health > 0;
         }
 
-        public float takeDamage(float damageAmount, int enemyCrit, int enemyDefense)
+        public void takeDamage(float damageAmount, int enemyCrit, int enemyDefense)
         {
             Random random = new Random();
             int rand = random.Next(1, 101);
@@ -49,12 +50,10 @@ namespace HelloDungeon
             }
 
             if (health < 0) health = 0;
-            return damageAmount;
         }
 
         public void Attack(BaseEntity otherEntiity)
         {
-            otherEntiity.takeDamage(attack, critHit, defense);
             Console.WriteLine($"{name} attacks {otherEntiity.name} for {damageAmount} damage!");
             Console.WriteLine($"{otherEntiity.name}'s new HP: {otherEntiity.health}");
             isTurn = false;

@@ -21,7 +21,8 @@ namespace HelloDungeon
             Console.WriteLine("Hello, what is your name?");
             player.name = Console.ReadLine();
             Console.WriteLine($"Okay, {player.name} press enter to start your adventure!");
-            Console.ReadLine();
+            Console.ReadKey();
+            FightScene();
         }
 
         public void GameOver()
@@ -71,12 +72,7 @@ namespace HelloDungeon
 
                 if (enemy.isTurn == true)
                 {
-                    player.takeDamage(enemy.attack, enemy.critHit, enemy.defense);
-                    Console.WriteLine($"The {enemy.name} attacks {player.name} for {enemy.attack} damage!");
-                    Console.WriteLine($"{player.name}'s new Hp: {player.health}");
-                    Console.ReadLine();
-                    player.isTurn = true;
-                    enemy.isTurn = false;
+                    enemy.Attack(player);
                 }
 
             }
