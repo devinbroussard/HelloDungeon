@@ -40,14 +40,11 @@ namespace HelloDungeon
             float damageAmount;
             Random random = new Random();
             int rand = random.Next(0, 100);
-            Console.WriteLine(rand);
-            Console.ReadKey();
             //Multplies attack by 1.5 on critical hits
             if (rand < otherEntity.critHit)
             {
-
                 damageAmount = attack * 1.5f * (100 - otherEntity.defense) / 100;
-                otherEntity.health -= damageAmount;
+
                 Console.WriteLine($"Critical hit!");
                 Console.ReadKey();
             }
@@ -55,8 +52,10 @@ namespace HelloDungeon
             else
             {
                 damageAmount = attack * (100 - otherEntity.defense) / 100;
-                otherEntity.health -= damageAmount;
             }
+
+
+            otherEntity.health -= 60;
             if (otherEntity.health > 0) otherEntity.health = 0;
 
             Console.WriteLine($"{name} attacks {otherEntity.name} for {damageAmount} damage!");

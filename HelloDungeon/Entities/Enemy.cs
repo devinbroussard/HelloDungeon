@@ -10,14 +10,13 @@ namespace HelloDungeon
         private float _health;
         public float health
         {
-            get { return _health; }
-            set { }
+            get;
+            set;
         }
         public int attack { get; set; }
         public int defense { get; set; }
         public bool isTurn { get; set; }
         public int critHit { get; set; }
-        public float damageAmount { get; set; }
 
         public Enemy(string Name, int Attack, int Defense, float Health, bool _isTurn, int _critHit)
         {
@@ -33,31 +32,35 @@ namespace HelloDungeon
             return health > 0;
         }
 
-        public void takeDamage(float damageAmount, int enemyCrit, int enemyDefense)
+        public void Attack(BaseEntity otherEntity)
         {
+            float damageAmount;
             Random random = new Random();
-            int rand = random.Next(1, 101);
-
-            if (rand < enemyCrit)
+            int rand = random.Next(0, 100);
+            //Multplies attack by 1.5 on critical hits
+            if (rand < otherEntity.critHit)
             {
-                damageAmount = damageAmount * 1.5f * (100 - enemyDefense) / 100;
-                health -= damageAmount;
+
+                damageAmount = attack * 1.5f * (100 - otherEntity.defense) / 100;
+
+                Console.WriteLine($"Critical hit!");
+                Console.ReadKey();
             }
+            //
             else
             {
-                damageAmount = damageAmount * (100 - enemyDefense) / 100;
-                health -= damageAmount;
+                damageAmount = attack * (100 - otherEntity.defense) / 100;
             }
 
-            if (health < 0) health = 0;
-        }
 
-        public void Attack(BaseEntity otherEntiity)
-        {
-            Console.WriteLine($"{name} attacks {otherEntiity.name} for {damageAmount} damage!");
-            Console.WriteLine($"{otherEntiity.name}'s new HP: {otherEntiity.health}");
+            otherEntity.health -= 60;
+            if (otherEntity.health > 0) otherEntity.health = 0;
+
+            Console.WriteLine($"{name} attacks {otherEntity.name} for {damageAmount} damage!");
+            Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}");
+            Console.ReadKey();
+
             isTurn = false;
-            otherEntiity.isTurn = true;
 
         }
     }
