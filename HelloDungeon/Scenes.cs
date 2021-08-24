@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HelloDungeon
 {
+    //A class that will contain different reoccuring scenes throughout the game, like GameOver, WinScreen, FightScene, etc.
     class Scenes
     {
 
@@ -13,14 +14,14 @@ namespace HelloDungeon
         public Scenes()
         {
             player = new Player("", 40, 20, 100, true, 15);
-            enemy = new Enemy("Skeleton", 40, 20, 100, true, 15);
+            enemy = new Enemy("Skeleton", 40, 20, 100, false, 15);
         }
 
         public void StartGame()
         {
             Console.WriteLine("Hello, what is your name?");
             player.name = Console.ReadLine();
-            Console.WriteLine($"Okay, {player.name} press enter to start your adventure!");
+            Console.WriteLine($"Okay, {player.name} press enter to start your adventure!\n");
             Console.ReadKey();
             FightScene();
         }
@@ -38,6 +39,7 @@ namespace HelloDungeon
 
         public void FightScene()
         {
+            Console.Clear();
             Console.WriteLine($"A {enemy.name} appears!");
 
             while (player.isAlive() && enemy.isAlive())
@@ -70,7 +72,7 @@ namespace HelloDungeon
 
                 }
 
-                if (enemy.isTurn == true)
+                else if (enemy.isTurn == true)
                 {
                     enemy.Attack(player);
                 }

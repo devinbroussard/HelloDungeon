@@ -15,5 +15,6 @@ namespace HelloDungeon
 
         bool isAlive();
         void Attack(BaseEntity otherEntity);
+        void takeDamage(float damageAmount);
     }
 }
