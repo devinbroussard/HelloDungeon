@@ -72,6 +72,7 @@ namespace HelloDungeon
             }
             otherEntity.takeDamage(damageAmount);
 
+            Console.WriteLine();
             Console.WriteLine($"{name} attacks {otherEntity.name} for {damageAmount} damage!");
             Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}\n");
             Console.ReadKey();

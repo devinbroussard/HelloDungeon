@@ -45,9 +45,9 @@ namespace HelloDungeon
             while (player.isAlive() && enemy.isAlive())
             {
 
-
                 if (player.isTurn == true)
                 {
+                    Console.Clear();
                     Console.WriteLine("What would you like to do?");
                     Console.WriteLine("1. Attack!");
                     Console.WriteLine("2. Scavage for items.");

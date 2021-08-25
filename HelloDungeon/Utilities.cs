@@ -4,9 +4,9 @@ using System.Text;
 
 namespace HelloDungeon
 {
-    class Utilities
+    static class Utilities
     {
-        static void WriteRead(string text)
+        public static void WriteRead(string text)
         {
             Console.WriteLine(text);
             Console.ReadLine();

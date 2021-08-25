@@ -60,7 +60,7 @@ namespace HelloDungeon
             {
                 damageAmount = attack * 1.5f * (100 - otherEntity.defense) / 100;
 
-                Console.WriteLine($"Critical hit!");
+                Console.WriteLine($"Critical hit incoming!\n");
                 Console.ReadKey();
             }
             //If not a critical, attacks normally
@@ -70,6 +70,7 @@ namespace HelloDungeon
             }
             otherEntity.takeDamage(damageAmount);
 
+            Console.WriteLine();
             Console.WriteLine($"{name} attacks {otherEntity.name} for {damageAmount} damage!");
             Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}");
             Console.ReadKey();

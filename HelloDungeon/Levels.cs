@@ -6,5 +6,10 @@ namespace HelloDungeon
 {
     class Levels
     {
+        public void LevelOne()
+        {
+            Utilities.WriteRead("You awaken in a forest...");
+        }
+
     }
 }
