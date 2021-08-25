@@ -4,6 +4,7 @@ using System.Text;
 
 namespace HelloDungeon
 {
+    //Player class created from the BaseEntity interface
     class Player : BaseEntity
     {
         //Defining members of class
@@ -77,6 +78,7 @@ namespace HelloDungeon
             Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}\n");
             Console.ReadKey();
 
+            //Changes turn to the other entity
             isTurn = false;
             otherEntity.isTurn = true;
 

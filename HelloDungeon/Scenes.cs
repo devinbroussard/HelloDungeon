@@ -7,17 +7,15 @@ namespace HelloDungeon
     //A class that will contain different reoccuring scenes throughout the game, like GameOver, WinScreen, FightScene, etc.
     class Scenes
     {
+
         //Creating instances of classes used in file
-        Levels levels = new Levels();
-        Game game = new Game();
         public Player player;
-        public Enemy enemy;
+        Levels levels = new Levels();
 
         //A constructor that creates two new objects of the player and enemy classes
         public Scenes()
         {
             player = new Player("", 40, 20, 100, true, 15);
-            enemy = new Enemy("Skeleton", 40, 20, 100, false, 15);
         }
 
         //This function calls the welcome screen, and then progresses the game
@@ -25,13 +23,12 @@ namespace HelloDungeon
         {
             Console.WriteLine("Hello, what is your name?");
             player.name = Console.ReadLine();
-            Console.WriteLine($"Okay, {player.name} press enter to start your adventure!\n");
-            Console.ReadKey();
-
-            levels.LevelOne();
+            Utilities.WriteRead($"Okay, {player.name} press enter to start your adventure!\n");
+            levels.StartLevelOne();
         }
 
-        public void GameOver()
+        //Function that can be called to end the game
+        public void StartGameOver()
         {
             Console.WriteLine("Game Over!");
             Console.WriteLine("Press enter to give up, or type 'restart', to try again!");
@@ -42,12 +39,13 @@ namespace HelloDungeon
             }
         }
 
-        public void FightScene()
+        //Reusable function that makes two BaseEntities fight
+        public void FightScene(BaseEntity otherEntity)
         {
             Console.Clear();
-            Console.WriteLine($"A {enemy.name} appears!");
+            Console.WriteLine($"{otherEntity.name} appears!");
 
-            while (player.isAlive() && enemy.isAlive())
+            while (player.isAlive() && otherEntity.isAlive())
             {
 
                 if (player.isTurn == true)
@@ -62,7 +60,7 @@ namespace HelloDungeon
                     {
                         case "attack":
                         case "1":
-                            player.Attack(enemy);
+                            player.Attack(otherEntity);
                                 break;
                         case "2":
                         case "Scavage":
@@ -77,14 +75,14 @@ namespace HelloDungeon
 
                 }
 
-                else if (enemy.isTurn == true)
+                else if (otherEntity.isTurn == true)
                 {
-                    enemy.Attack(player);
+                    otherEntity.Attack(player);
                 }
 
             }
 
-            GameOver();
+            StartGameOver();
 
         }
 

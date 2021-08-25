@@ -4,7 +4,8 @@ using System.Text;
 
 namespace HelloDungeon
 {
-    class Enemy : BaseEntity
+    //Enemy class created from the BaseEntity interface
+    class SimpleEnemy : BaseEntity
     {
         //Defining members of class
         public string name { get; set; }
@@ -20,7 +21,8 @@ namespace HelloDungeon
         public int critHit { get; set; }
         public float damageAmount { get; set; }
 
-        public Enemy(string Name, int Attack, int Defense, float Health, bool _isTurn, int _critHit)
+        //Constructor used to declare variable values when creating instance of class
+        public SimpleEnemy(string Name, int Attack, int Defense, float Health, bool _isTurn, int _critHit)
         {
             attack = Attack;
             name = Name;
@@ -29,6 +31,7 @@ namespace HelloDungeon
             critHit = _critHit;
             defense = Defense;
         }
+        //Function used to check if entity is alive
         public bool isAlive()
         {
             return health > 0;
@@ -72,9 +75,10 @@ namespace HelloDungeon
 
             Console.WriteLine();
             Console.WriteLine($"{name} attacks {otherEntity.name} for {damageAmount} damage!");
-            Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}");
+            Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}\n");
             Console.ReadKey();
 
+            //Changes turn to the other entity
             isTurn = false;
             otherEntity.isTurn = true;
 
