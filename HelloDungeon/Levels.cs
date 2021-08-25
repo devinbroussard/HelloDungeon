@@ -6,6 +6,8 @@ namespace HelloDungeon
 {
     class Levels
     {
+        //creates new instance of games class
+        Game game = new Game();
 
         //Initiates a skeleton object from the SimpleEnemy class
         public SimpleEnemy theSkeleton;
@@ -37,13 +39,12 @@ namespace HelloDungeon
                     Utilities.WriteRead("You attempt to cross the tree.\n" +
                         "Unfortunately, you only make it half way before the tree breaks, leaving you to drown in the rushing water.\n" +
                         "You die a sad death.");
-
                 }
 
             }
 
             Console.Clear();
-            Utilities.WriteRead("You awaken in a forest...\n" +
+            Console.WriteLine("You awaken in a forest...\n" +
                 "You are disoriented and your head is pounding...\n" +
                 "Upon examining your surrounding, you notice that the sun is setting.\n" +
                 "You begin walking towards a dirt path in the distance.\n" +

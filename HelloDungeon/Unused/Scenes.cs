@@ -7,25 +7,9 @@ namespace HelloDungeon
     //A class that will contain different reoccuring scenes throughout the game, like GameOver, WinScreen, FightScene, etc.
     class Scenes
     {
+        Game game = new Game();
 
-        //Creating instances of classes used in file
-        public Player player;
-        Levels levels = new Levels();
-
-        //A constructor that creates two new objects of the player and enemy classes
-        public Scenes()
-        {
-            player = new Player("", 40, 20, 100, true, 15);
-        }
-
-        //This function calls the welcome screen, and then progresses the game
-        public void StartGame()
-        {
-            Console.WriteLine("Hello, what is your name?");
-            player.name = Console.ReadLine();
-            Utilities.WriteRead($"Okay, {player.name} press enter to start your adventure!\n");
-            levels.StartLevelOne();
-        }
+        Player player;
 
         //Function that can be called to end the game
         public void StartGameOver()
@@ -35,7 +19,7 @@ namespace HelloDungeon
             string gameOverChoice = Console.ReadLine().ToLower();
             if (gameOverChoice == "restart")
             {
-                StartGame();
+                game.StartGame();
             }
         }
 
