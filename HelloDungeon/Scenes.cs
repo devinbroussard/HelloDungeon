@@ -7,23 +7,28 @@ namespace HelloDungeon
     //A class that will contain different reoccuring scenes throughout the game, like GameOver, WinScreen, FightScene, etc.
     class Scenes
     {
-
+        //Creating instances of classes used in file
+        Levels levels = new Levels();
         Game game = new Game();
         public Player player;
         public Enemy enemy;
+
+        //A constructor that creates two new objects of the player and enemy classes
         public Scenes()
         {
             player = new Player("", 40, 20, 100, true, 15);
             enemy = new Enemy("Skeleton", 40, 20, 100, false, 15);
         }
 
+        //This function calls the welcome screen, and then progresses the game
         public void StartGame()
         {
             Console.WriteLine("Hello, what is your name?");
             player.name = Console.ReadLine();
             Console.WriteLine($"Okay, {player.name} press enter to start your adventure!\n");
             Console.ReadKey();
-            FightScene();
+
+            levels.LevelOne();
         }
 
         public void GameOver()

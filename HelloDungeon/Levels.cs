@@ -8,7 +8,11 @@ namespace HelloDungeon
     {
         public void LevelOne()
         {
-            Utilities.WriteRead("You awaken in a forest...");
+            Console.Clear();
+            Console.WriteLine("You awaken in a forest...\n" +
+                "You are disoriented and your head is pounding...\n" +
+                "Upon examining your surrounding, you notice that the sun is setting.\n" +
+                "You begin walking towards a dirt path in the distance.\n");
         }
 
     }
