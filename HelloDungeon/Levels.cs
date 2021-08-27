@@ -6,8 +6,8 @@ namespace HelloDungeon
 {
     class Levels
     {
-        //creates new instance of games class
-        Game game = new Game();
+        //initiates new scenes object from the scenes class
+        Scenes scenes = new Scenes();
 
         //Initiates a skeleton object from the SimpleEnemy class
         public SimpleEnemy theSkeleton;
@@ -24,21 +24,23 @@ namespace HelloDungeon
             //Functions that give the player different scenarios based on the decision given
             void GoRightPath()
             {
-                
+                scenes.FightScene(theSkeleton);
             }
             void GoLeftPath()
             {
                 Console.Clear();
-                Utilities.WriteRead("You head down the path to your left, until you reach a rushing river.\n" +
+               Console.WriteLine("You head down the path to your left, until you reach a rushing river.\n" +
                     "The water is moving far too fast for you to swim through it.\n" +
                     "You see a fallen tree laid across the river. You might be able to cross it.\n");
 
                 int input = Utilities.GetInput("Will you turn back, or cross the tree?", "Cross the tree", "Turn around");
                 if (input == 1)
                 {
+                    Console.Clear();
                     Utilities.WriteRead("You attempt to cross the tree.\n" +
                         "Unfortunately, you only make it half way before the tree breaks, leaving you to drown in the rushing water.\n" +
                         "You die a sad death.");
+                    scenes.StartGameOver();
                 }
 
             }

@@ -7,19 +7,35 @@ namespace HelloDungeon
     //A class that will contain different reoccuring scenes throughout the game, like GameOver, WinScreen, FightScene, etc.
     class Scenes
     {
-        Game game = new Game();
+        public Player player;
 
-        Player player;
+        public Scenes()
+        {
+            player = new Player("", 60, 20, 100, true, 15);
+        }
+
+        public void StartGame()
+        {
+            Console.Clear();
+            Console.WriteLine("Hello, what is your name?");
+            player.name = Console.ReadLine();
+            Utilities.WriteRead($"Okay, {player.name} press enter to start your adventure!\n");
+        }
 
         //Function that can be called to end the game
         public void StartGameOver()
         {
+            Console.Clear();
             Console.WriteLine("Game Over!");
-            Console.WriteLine("Press enter to give up, or type 'restart', to try again!");
-            string gameOverChoice = Console.ReadLine().ToLower();
-            if (gameOverChoice == "restart")
+            int input = Utilities.GetInput("Will you give up, or try again?", "Try again", "Give up");
+
+            if (input == 1)
             {
-                game.StartGame();
+                StartGame();
+            }
+            if (input == 2)
+            {
+                Utilities.WriteRead("Goodbye, coward!");
             }
         }
 
@@ -27,7 +43,7 @@ namespace HelloDungeon
         public void FightScene(BaseEntity otherEntity)
         {
             Console.Clear();
-            Console.WriteLine($"{otherEntity.name} appears!");
+            Utilities.WriteRead($"{otherEntity.name} appears!");
 
             while (player.isAlive() && otherEntity.isAlive())
             {
