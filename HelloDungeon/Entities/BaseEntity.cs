@@ -13,8 +13,8 @@ namespace HelloDungeon
         bool isTurn { get; set; }
         int critHit { get; set; }
 
-        bool isAlive();
+        bool IsAlive();
         void Attack(BaseEntity otherEntity);
-        void takeDamage(float damageAmount);
+        void TakeDamage(float damageAmount);
     }
 }

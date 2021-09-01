@@ -6,6 +6,8 @@ namespace HelloDungeon
 {
     class Levels
     {
+        public int currentScene = 0;
+
         //initiates new scenes object from the scenes class
         Scenes scenes = new Scenes();
 
@@ -16,6 +18,12 @@ namespace HelloDungeon
         public Levels()
         {
             theSkeleton = new SimpleEnemy("The Skeleton", 40, 20, 100, false, 15);
+        }
+
+        public void DisplayCurrentScene()
+        {
+            if (currentScene == 0) scenes.DisplayWelcomeScene();
+            if (currentScene == 1) StartLevelOne();
         }
 
         //Level One function that can be called to start Level One
@@ -40,7 +48,7 @@ namespace HelloDungeon
                     Utilities.WriteRead("You attempt to cross the tree.\n" +
                         "Unfortunately, you only make it half way before the tree breaks, leaving you to drown in the rushing water.\n" +
                         "You die a sad death.");
-                    scenes.StartGameOver();
+                    scenes.player.InstantKill();
                 }
 
             }

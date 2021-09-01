@@ -32,13 +32,13 @@ namespace HelloDungeon
             defense = Defense;
         }
         //Function used to check if entity is alive
-        public bool isAlive()
+        public bool IsAlive()
         {
             return health > 0;
         }
 
         //Function used to deal damage to the private health variable
-        public void takeDamage(float damageAmount)
+        public void TakeDamage(float damageAmount)
         {
             _health -= damageAmount;
 
@@ -46,6 +46,11 @@ namespace HelloDungeon
             {
                 _health = 0;
             }
+        }
+
+        public void InstantKill()
+        {
+            _health = 0;
         }
 
         //Generic attack function that can be called using multiple enemiesa
@@ -71,7 +76,7 @@ namespace HelloDungeon
             {
                 damageAmount = attack * (100 - otherEntity.defense) / 100;
             }
-            otherEntity.takeDamage(damageAmount);
+            otherEntity.TakeDamage(damageAmount);
 
             Console.WriteLine($"{name} attacks {otherEntity.name} for {damageAmount} damage!");
             Console.WriteLine($"{otherEntity.name}'s new Hp: {otherEntity.health}\n");

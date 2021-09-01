@@ -11,8 +11,18 @@ namespace HelloDungeon
 
         public void Run()
         {
-            scenes.StartGame();
-            levels.StartLevelOne();
+            while (!scenes.gameOver)
+            {
+                levels.DisplayCurrentScene();
+
+                if (!scenes.player.IsAlive()) scenes.StartGameOver();
+                levels.currentScene++;
+                //if (levels.currentScene == 3
+                //{
+                //    scenes.DisplayWinScreen();
+                //    levels.currentScene = 0;
+                //}
+            }
         }
 
     }

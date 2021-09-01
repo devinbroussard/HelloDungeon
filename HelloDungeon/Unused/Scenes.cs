@@ -7,14 +7,11 @@ namespace HelloDungeon
     //A class that will contain different reoccuring scenes throughout the game, like GameOver, WinScreen, FightScene, etc.
     class Scenes
     {
-        public Player player;
+        public bool gameOver;
+        public Player player = new Player("", 60, 20, 100, true, 15);
 
-        public Scenes()
-        {
-            player = new Player("", 60, 20, 100, true, 15);
-        }
 
-        public void StartGame()
+        public void DisplayWelcomeScene()
         {
             Console.Clear();
             Console.WriteLine("Hello, what is your name?");
@@ -22,21 +19,26 @@ namespace HelloDungeon
             Utilities.WriteRead($"Okay, {player.name} press enter to start your adventure!\n");
         }
 
+        public void DisplayWinScreen()
+        {
+            Console.Clear();
+            Console.WriteLine("You won!");
+            int input = Utilities.GetInput("Would you like to end the game, or try again?", "Try again", "End game");
+
+            if (input == 1) gameOver = false;
+
+            if (input == 2) Utilities.WriteRead("Okay, goodbye!");
+        }
+
         //Function that can be called to end the game
         public void StartGameOver()
         {
             Console.Clear();
             Console.WriteLine("Game Over!");
-            int input = Utilities.GetInput("Will you give up, or try again?", "Try again", "Give up");
+            int input = Utilities.GetInput("Will you try again, or give up?", "Try again", "Give up");
 
-            if (input == 1)
-            {
-                StartGame();
-            }
-            if (input == 2)
-            {
-                Utilities.WriteRead("Goodbye, coward!");
-            }
+            if (input == 1) gameOver = false;
+            if (input == 2) Utilities.WriteRead("Goodbye, coward!");
         }
 
         //Reusable function that makes two BaseEntities fight
@@ -45,7 +47,7 @@ namespace HelloDungeon
             Console.Clear();
             Utilities.WriteRead($"{otherEntity.name} appears!");
 
-            while (player.isAlive() && otherEntity.isAlive())
+            while (player.IsAlive() && otherEntity.IsAlive())
             {
 
                 if (player.isTurn == true)
